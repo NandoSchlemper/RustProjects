@@ -1,26 +1,25 @@
-mod create_magic_card {
+pub mod create_magic_card {
     // Modifica a construção da carta
-    enum tipo {
-        Artefato,
-        Encantamento,
-        Feitiço,
-        Mágica_Instantanea,
-        Planeswalker,
-        Terreno
+    enum Tipo {
+        Artefato(String),
+        Encantamento(String),
+        Feitiço(String),
+        MágicaInstantanea(String),
+        Planeswalker(String),
+        Terreno(String),
     }
 
     // Tipagem da carta, não modifica a construção dela
-    enum cor {
+    enum Cor {
         Preta,
         Azul,
         Branca,
         Verde,
-        Vermelho
+        Vermelho,
     }
 
-    struct magic_card {
-        Nome: String,
-
+    struct NewCard {
+        name: String,
+        description: String,
     }
-
 }

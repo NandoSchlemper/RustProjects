@@ -1,4 +1,4 @@
-use crate::create_magic_card;
+mod card_compose;
 fn main() {
     println!("Hello, world!");
 }
