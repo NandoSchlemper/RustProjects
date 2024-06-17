@@ -1,0 +1,6 @@
+[package]
+name = "magic_cards"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
