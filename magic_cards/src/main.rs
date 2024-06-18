@@ -1,5 +1,7 @@
 mod card;
 
+use card::card_compose::{ CriarCarta, Tipagens };
+
 fn main() {
     let card_one = CriarCarta {
         name: String::from("Carta numero 1"),

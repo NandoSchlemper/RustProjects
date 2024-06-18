@@ -19,13 +19,12 @@ impl CriarCarta {
         );
     }
 
-    pub fn build_card(&self) -> Struct {
-        let carta_usuario = CriarCarta {
+    pub fn build_card(nome: String, tipo: Tipagens, descrição: String, cor: String) -> CriarCarta {
+        CriarCarta {
             name: nome,
-            tipagem,
-            description,
-            card_color,
-        };
-        carta_usuario
+            tipagem: tipo,
+            description: descrição,
+            card_color: cor,
+        }
     }
 }
