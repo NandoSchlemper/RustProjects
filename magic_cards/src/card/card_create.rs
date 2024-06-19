@@ -8,7 +8,7 @@ pub fn get_value(mut x: String) -> String {
     x
 }
 
-pub fn binary_comp_types(x: String) -> (Tipagens) {
+pub fn binary_comp_types(x: String) -> () {
     let mod_x = x.trim().parse();
     if mod_x == 1 {
         let response = Tipagens::Permanent;
@@ -17,21 +17,19 @@ pub fn binary_comp_types(x: String) -> (Tipagens) {
         let response: Tipagens = Tipagens::NonPermanent;
         response
     } else {
-        println!("Numero informado esta incorreto!");
-        None
+        panic!("Numero informado esta incorreto!");
     };
 }
 
-pub fn full_card_creation() -> CriarCarta {
+#[warn(unused_variables)]
+pub fn full_card_creation() -> () /* CriarCarta */  {
     println!("Bem vindo a nosso criador de cartas Magic!\n");
     println!("(1/4) Digite um nome para sua carta!");
 
     // Definindo nome da carta
-    let mut card_name = String::new();
-    let user_card_name: String = get_value(card_name);
+    let card_name = String::new();
+    let _user_card_name: String = get_value(card_name);
     // -- > -- | -- < --
 
     println!("(2/4) Qual vai ser o tipo da sua carta?\n");
-    let mut card_type: Tipagens;
-    card_type.iterate_over_types();
 }
