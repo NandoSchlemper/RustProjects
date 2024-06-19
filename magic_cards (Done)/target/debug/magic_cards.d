@@ -1,1 +1,0 @@
-/home/claretiano/Documentos/Project/RustProjects/magic_cards/target/debug/magic_cards: /home/claretiano/Documentos/Project/RustProjects/magic_cards/src/card/card_compose.rs /home/claretiano/Documentos/Project/RustProjects/magic_cards/src/card.rs /home/claretiano/Documentos/Project/RustProjects/magic_cards/src/main.rs
