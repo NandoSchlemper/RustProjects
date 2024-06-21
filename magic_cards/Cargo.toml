@@ -1,8 +1,0 @@
-[package]
-name = "magic_cards"
-version = "0.2.0"
-edition = "2021"
-
-[dependencies]
-strum = "0.26"
-strum_macros = "0.26"
