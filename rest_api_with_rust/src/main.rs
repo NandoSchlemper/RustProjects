@@ -33,6 +33,20 @@ async fn get_all_users(users: web::Data<Arc<Mutex<Users>>>) -> impl Responder {
     format!("Lista de todos os usuários: \n {:?}", users.user_list)
 }
 
+
+async fn delete_user(
+    user: web::Json<User>,
+    users: web::Data<Mutex<Arc<Users>>>
+    ) -> impl Responder {
+    
+    let mut users = users.lock().unwrap();
+
+    let user_find = user.into_inner();
+
+    let search_in_vec = users.user_list.iter().position(|&r| r == user_find).unwrap();
+
+}
+
 async fn handler_json() -> impl Responder {
     "Yay"
 }
