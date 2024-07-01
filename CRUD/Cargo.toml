@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 dotenv = "0.15"
+tokio = "1.38.0"
+tokio-postgres = "0.7.10"
