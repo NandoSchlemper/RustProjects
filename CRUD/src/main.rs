@@ -1,17 +1,24 @@
 mod db;
 mod web;
-use dotenv::dotenv;
-use std::env;
-use tokio_postgres::{Error, NoTls};
+use tokio_postgres::Error;
+use db::connection::db;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    // Carregando variaveis de ambiente
-    dotenv().ok();
+    let client = db().await?;
 
-    let db_url = env::var("DB_URL").unwrap();
-    println!("URL do Banco de Dados: {:?}", db_url);
+    let table_list_query = "
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = 'public'
+    AND table_type = 'BASE TABLE'
+    ";
 
-    let (client, connection) = tokio_postgres::connect(&db_url, NoTls).await?;
+    // Passar essas queries para o arquivo src/db/queries.rs
+    let tables_list = client
+        .query(table_list_query, &[])
+        .await?;
+    println!("Tables: {:?}", tables_list);
+
     Ok(())
 }
