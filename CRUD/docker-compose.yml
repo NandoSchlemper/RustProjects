@@ -4,30 +4,37 @@ services:
       context: .
       target: final
     ports:
-      - 8080:8080
+      - 8080:8080 
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://Fernando:Rfm*102030@db:5432/crud  # URL de conexão com o banco de dados PostgreSQL
-      - APP_ENV=production  # Exemplo de variável de ambiente para configuração do ambiente de aplicação
+      DATABASE_URL: "host=db user=Fernando dbname=crud password=Rfm*102030"
+    networks:
+      - app-network
 
   db:
     image: postgres:16
     healthcheck:
-      test: ...
+      test: ["CMD-SHELL", "pg_isready -U Fernando -d crud"]
       interval: 5s
       timeout: 5s
       retries: 3
       start_period: 10s
     restart: always
     environment:
-      POSTGRES_DB: crud  # Nome do banco de dados a ser criado
-      POSTGRES_USER: Fernando  # Usuário para acessar o banco de dados
-      POSTGRES_PASSWORD: Rfm*102030  # Senha do usuário do banco de dados
+      POSTGRES_DB: crud 
+      POSTGRES_USER: Fernando 
+      POSTGRES_PASSWORD: Rfm*102030 
     ports:
-      - "5432:5432"  # Mapeamento da porta do PostgreSQL
+      - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data  # Persistência dos dados do PostgreSQL
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
 
 volumes:
   db-data:
+
+networks:
+  app-network:
+    driver: bridge
