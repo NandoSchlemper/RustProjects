@@ -13,6 +13,7 @@ services:
       - app-network
 
   db:
+    container_name: database_diesel
     image: postgres:16
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U Fernando -d crud"]
@@ -32,8 +33,23 @@ services:
     networks:
       - app-network
 
+  db-learn:
+    container_name: database_diesel_learn
+    stdin_open: true
+    tty: true
+    environment:
+      - DATABASE_URL=postgres://Fernando:Rfm*102030@db:5432/crud
+    build:
+      context: ./
+    volumes:
+      - ./:/database_diesel_learn
+      - database_diesel_learn:/diesel/target
+    depends_on:
+      - db
+
 volumes:
   db-data:
+  database_diesel_learn:
 
 networks:
   app-network:
